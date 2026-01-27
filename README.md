@@ -227,15 +227,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## Acknowledgments
-
-This work builds on foundations from:
-- Free-energy principle (Friston, 2010)
-- Attractor networks (Hopfield, 1982)
-- Symbol grounding problem (Harnad, 1990)
-
----
-
 ## Contact
 
 For questions or issues, please open a GitHub issue or contact the author.
