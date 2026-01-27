@@ -6,7 +6,7 @@
 
 **Official implementation of the paper:**
 
-> **Clock-Selected Compression Theory: An Axiomatic Framework for Discrete Symbol Emergence from Continuous Dynamics**
+> **Intelligence within Bounds: Why Cognition Requires a Closed Convex Hull*
 >
 > *How do discrete symbolic representations emerge from continuous neural dynamics?*
 
@@ -49,7 +49,7 @@ CSCT (Clock-Selected Compression Theory) is an axiomatic framework that explains
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/csct.git
+git clone https://github.com/CSCT-NAIL/csct.git
 cd csct
 
 # Install dependencies
@@ -157,47 +157,6 @@ results/
     └── aggregate_figures/
 ```
 
----
-
-## CSCT Engine Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    CSCT Engine                              │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  Input: x(t), y(t)  [B, T, D]                              │
-│           │                                                 │
-│           ▼                                                 │
-│  ┌─────────────────┐                                       │
-│  │ Feature Extract │  φ(u) = [u, du/dt, d²u/dt²]          │
-│  └────────┬────────┘                                       │
-│           │ [B, T, 6D]                                     │
-│           ▼                                                 │
-│  ┌─────────────────┐                                       │
-│  │  Gate Network   │  SingleGate / MultiGate               │
-│  └────────┬────────┘                                       │
-│           │ logits [B, T, K]                               │
-│           ▼                                                 │
-│  ┌─────────────────┐                                       │
-│  │ Straight-Through│  Top-K + Gumbel                       │
-│  └────────┬────────┘                                       │
-│           │ p ∈ Δ^(K-1)  (Simplex)                         │
-│           ▼                                                 │
-│  ┌─────────────────┐                                       │
-│  │   Codebook V    │  V ∈ ℝ^(K×D), learnable              │
-│  └────────┬────────┘                                       │
-│           │                                                 │
-│           ▼                                                 │
-│  Output: x̂ = Σ_k p_k · v_k + b                             │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-
-Loss = MSE(x, x̂) + β · TransitionPenalty + λ · GateSupervision
-```
-
----
-
 ## Reproducing Paper Results
 
 ### Main Results (Table 13 in paper)
@@ -224,18 +183,15 @@ python csct_suite.py --run all --seeds 30
 ---
 
 ## Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@article{csct2025,
-  title={Clock-Selected Compression Theory: An Axiomatic Framework for Discrete Symbol Emergence from Continuous Dynamics},
-  author={NAOKI},
-  journal={bioRxiv},
-  year={2025},
-  note={Preprint}
+@article{csct2026,
+  title={Intelligence within Bounds: Why Cognition Requires a Closed Convex Hull},
+  author={Higuchi, Naoki},
+  year={2026},
+  journal={Preprint},
+  note={Work in progress},
+  url={https://github.com/CSCT-NAIL/CSCT}
 }
-```
+
 
 ---
 
