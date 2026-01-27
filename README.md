@@ -88,7 +88,7 @@ pandas>=1.3.0  # optional, for summary tables
 | **EX5** | A3 | Feature binding via shared clock | PLV (Phase-Locking Value) |
 | **EX6** | A2 | Category recognition (frozen codebook) | MSE ratio, JSD |
 | **EX7** | A3 | Relational internal time | Event rate dilation |
-| **EX8** | A2, A5 | Semantic grounding (convex hull) | IN_HULL vs OUT_HULL |
+| **EX8** | A2 | Semantic grounding (convex hull) | IN_HULL vs OUT_HULL |
 | **EX9** | A5 | Syntax inference (barycentric) | Composition success rate |
 
 ### Running Individual Experiments
