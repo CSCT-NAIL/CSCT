@@ -1,5 +1,5 @@
 # CSCT: Clock-Selected Compression Theory
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18382368.svg)](https://doi.org/10.5281/zenodo.18382368)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch 2.0+](https://img.shields.io/badge/pytorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -192,7 +192,9 @@ python csct_suite.py --run all --seeds 30
   url={https://github.com/CSCT-NAIL/CSCT}
 }
 
+**Software Citation:**
 
+> CSCT-NAIL. (2026). CSCT-NAIL/CSCT: CSCT Engine: Initial Release (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.18382368
 ---
 
 ## Project Structure
