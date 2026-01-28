@@ -29,11 +29,6 @@ env/
 # Jupyter
 .ipynb_checkpoints/
 
-# Results (optional: include or exclude)
-results/
-*.csv
-*.png
-*.pdf
 
 # IDE
 .idea/
