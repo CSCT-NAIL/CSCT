@@ -1,0 +1,30 @@
+\begin{table}[t]
+\centering
+\scriptsize % 表だけさらに小さく
+\setlength{\tabcolsep}{3.0pt} % 列間を詰める
+\renewcommand{\arraystretch}{1.05}
+
+\caption{EX9 summary by condition (mean $\pm$ std across seeds). Success is defined as $\mathrm{sim}_{\text{withheld}} \geq 0.90$.}
+\label{tab:ex9_summary}
+
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l cccc}
+\toprule
+\textbf{Condition} & \textbf{Withheld sim. (B+C)} & \textbf{Trained sim.} & \textbf{Trans.\ rate} & \textbf{Final loss} \\
+\cmidrule(r){1-1} \cmidrule(l){2-5}
+\multicolumn{1}{l}{\textit{(N=30)}} & \textbf{MaxP(B+C)} & \textbf{Entropy(B+C)} & \textbf{Success} & \\
+\midrule
+
+in\_hull  & 0.890 $\pm$ 0.138 & 0.997 $\pm$ 0.010 & 5.89e-4 $\pm$ 1.68e-4 & 4.0e-4 $\pm$ 5.0e-4 \\
+          & 0.788 $\pm$ 0.174 & 0.454 $\pm$ 0.309 & 20/30 & \\
+\addlinespace
+
+random    & 0.767 $\pm$ 0.253 & 0.992 $\pm$ 0.025 & 6.06e-4 $\pm$ 1.78e-4 & 1.7e-3 $\pm$ 3.5e-3 \\
+          & 0.686 $\pm$ 0.156 & 0.649 $\pm$ 0.277 & 10/30 & \\
+\addlinespace
+
+out\_hull & 0.742 $\pm$ 0.168 & 0.994 $\pm$ 0.018 & 6.22e-4 $\pm$ 1.45e-4 & 3.0e-3 $\pm$ 1.22e-2 \\
+          & 0.700 $\pm$ 0.160 & 0.638 $\pm$ 0.298 & 4/30 & \\
+
+\bottomrule
+\end{tabular*}
+\end{table}

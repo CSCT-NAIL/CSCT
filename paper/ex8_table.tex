@@ -1,0 +1,29 @@
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{3.5pt} % 列間を詰めて幅を収める
+\renewcommand{\arraystretch}{1.05} % 縦を少しだけ読みやすく
+
+\caption{EX8 summary by condition (mean $\pm$ std across seeds). Success is defined as $\mathrm{sim}_{\text{withheld}} \geq 0.90$.}
+\label{tab:ex8_summary}
+
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcccc}
+\toprule
+\textbf{Condition} & \textbf{Withheld sim.} & \textbf{Trained sim.} & \textbf{Trans.\ rate} & \textbf{Unique codes} \\
+\cmidrule(r){1-1} \cmidrule(l){2-5}
+\multicolumn{1}{l}{\textit{(N=30)}} & \textbf{MaxP(C)} & \textbf{Entropy(C)} & \textbf{Success} & \\
+\midrule
+
+in\_hull  & 0.979 $\pm$ 0.025 & 1.000 $\pm$ 0.000 & 0.000761 $\pm$ 0.000095 & 2.97 $\pm$ 0.18 \\
+          & 0.747 $\pm$ 0.069 & 0.619 $\pm$ 0.105 & 29/30 & \\
+\addlinespace
+
+random    & 0.682 $\pm$ 0.370 & 1.000 $\pm$ 0.000 & 0.000695 $\pm$ 0.000158 & 2.67 $\pm$ 0.48 \\
+          & 0.763 $\pm$ 0.099 & 0.541 $\pm$ 0.175 & 16/30 & \\
+\addlinespace
+
+out\_hull & 0.701 $\pm$ 0.242 & 1.000 $\pm$ 0.000 & 0.000700 $\pm$ 0.000134 & 2.80 $\pm$ 0.41 \\
+          & 0.721 $\pm$ 0.073 & 0.599 $\pm$ 0.094 & 5/30 & \\
+\bottomrule
+\end{tabular*}
+\end{table}

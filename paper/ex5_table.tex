@@ -1,0 +1,39 @@
+\begin{table}[t]
+    \centering
+    \caption{\textbf{Experiment 5 Results (mean $\pm$ std).} $n_{\mathrm{seeds}}=20$.}
+    \label{tab:ex5_results}
+
+    % --- Subtable (a): MSE Metrics ---
+    \begin{subtable}{\columnwidth}
+        \centering
+        \caption{Reconstruction Error (MSE)}
+        \resizebox{\columnwidth}{!}{%
+        \begin{tabular}{lccc}
+            \toprule
+            \textbf{Condition} & $\mathrm{MSE}^{\mathrm{early}}$ & $\mathrm{MSE}^{\mathrm{late}}$ & $\mathrm{MSE}^{\mathrm{total}}$ \\
+            \midrule
+            Closed & $0.0236$ & $3.6974$ & $1.8593$ \\
+            Open   & \textbf{0.0082 $\pm$ 0.0014} & \textbf{0.0090 $\pm$ 0.0011} & \textbf{0.0089 $\pm$ 0.0005} \\
+            \bottomrule
+        \end{tabular}
+        }
+    \end{subtable}
+
+    \vspace{0.4cm} % Space between tables
+
+    % --- Subtable (b): Synchronization Dynamics ---
+    \begin{subtable}{\columnwidth}
+        \centering
+        \caption{Synchronization \& Phase Dynamics}
+        \resizebox{\columnwidth}{!}{%
+        \begin{tabular}{lccc}
+            \toprule
+            \textbf{Condition} & $T_{\mathrm{stable}}$ (Duration) & $\mathrm{PLV}_{\mathrm{late}}$ (Phase Lock) & $\varepsilon_{\phi}^{\mathrm{late}}$ (Phase Error) \\
+            \midrule
+            Closed & $0.1$ & $0.935$ & $0.934$ \\
+            Open   & \textbf{1.0} & \textbf{0.998} & \textbf{0.043 $\pm$ 0.002} \\
+            \bottomrule
+        \end{tabular}
+        }
+    \end{subtable}
+\end{table}

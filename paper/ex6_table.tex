@@ -1,0 +1,37 @@
+\begin{table}[t]
+    \centering
+    \caption{Experiment 6 summary (mean $\pm$ std across seeds).}
+    \label{tab:ex6_summary}
+
+    % --- Subtable (a): Code Statistics (Distribution, Clustering, Separability) ---
+    \begin{subtable}{\columnwidth}
+        \centering
+        \caption{Code Distribution \& Clustering Metrics}
+        \resizebox{\columnwidth}{!}{%
+        \begin{tabular}{lcccccc}
+            \toprule
+            Group & JSD (Within) & JSD (Withheld) & JSD Diff & ARI (Hist) & NMI (Hist) & Linear Sep. \\
+            \midrule
+            Pooled & $0.277 \pm 0.069$ & $0.253 \pm 0.034$ & $-0.024 \pm 0.048$ & $0.473 \pm 0.450$ & $0.576 \pm 0.359$ & $0.667 \pm 0.000$ \\
+            \bottomrule
+        \end{tabular}
+        }
+    \end{subtable}
+
+    \vspace{0.4cm} % Space between tables
+
+    % --- Subtable (b): Reconstruction Metrics (Primary Signal) ---
+    \begin{subtable}{\columnwidth}
+        \centering
+        \caption{Reconstruction Quality (Out-of-Distribution Signal)}
+        \resizebox{\columnwidth}{!}{%
+        \begin{tabular}{lccc}
+            \toprule
+            Group & MSE (Trained) & MSE (Withheld) & MSE Ratio (Withheld/Trained) \\
+            \midrule
+            Pooled & $0.0495 \pm 0.0079$ & $0.1837 \pm 0.0346$ & \textbf{3.79 $\pm$ 0.91} \\
+            \bottomrule
+        \end{tabular}
+        }
+    \end{subtable}
+\end{table}

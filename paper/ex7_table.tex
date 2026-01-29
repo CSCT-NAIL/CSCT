@@ -1,0 +1,39 @@
+\begin{table}[t]
+    \centering
+    \caption{Experiment 7 summary by world (mean $\pm$ std across seeds).}
+    \label{tab:ex7}
+
+    % --- Subtable (a): Frequency Specifications ---
+    \begin{subtable}{\columnwidth}
+        \centering
+        \caption{Frequency Specifications}
+        \begin{tabular}{lcccc}
+            \toprule
+            World & $f_{\min}$ & $f_{\max}$ & $N_{\mathrm{clocks}}$ & $f_0$ \\
+            \midrule
+            fast & $0.500 \pm 0.000$ & $1.500 \pm 0.000$ & $4 \pm 0$ & $0.500 \pm 0.000$ \\
+            slow & $0.151 \pm 0.000$ & $0.500 \pm 0.000$ & $4 \pm 0$ & $0.500 \pm 0.000$ \\
+            standard & $0.500 \pm 0.000$ & $0.500 \pm 0.000$ & $4 \pm 0$ & $0.500 \pm 0.000$ \\
+            NULL & $0.000 \pm 0.000$ & $0.000 \pm 0.000$ & $4 \pm 0$ & $0.500 \pm 0.000$ \\
+            \bottomrule
+        \end{tabular}
+    \end{subtable}
+
+    \vspace{0.4cm} % Space between tables
+
+    % --- Subtable (b): Discretization Dynamics ---
+    \begin{subtable}{\columnwidth}
+        \centering
+        \caption{Discretization Dynamics}
+        \begin{tabular}{lccc}
+            \toprule
+            World & Unique codes & Transitions & Trans./sec \\
+            \midrule
+            fast & $4.00 \pm 0.00$ & $90.2 \pm 9.9$ & $4.513 \pm 0.493$ \\
+            slow & $4.00 \pm 0.00$ & $29.3 \pm 3.3$ & $1.465 \pm 0.165$ \\
+            standard & $4.00 \pm 0.00$ & $56.4 \pm 11.5$ & $2.820 \pm 0.575$ \\
+            NULL & $1.00 \pm 0.00$ & $0.0 \pm 0.0$ & $0.000 \pm 0.000$ \\
+            \bottomrule
+        \end{tabular}
+    \end{subtable}
+\end{table}
