@@ -1,0 +1,15 @@
+title: "Intelligence within Bounds"
+description: "Why Cognition Requires a Closed Convex Hull — CSCT (Clock-Selected Compression Theory)"
+theme: minima
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  math_engine: mathjax
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+include:
+  - docs
