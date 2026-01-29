@@ -38,10 +38,10 @@ CSCT (Clock-Selected Compression Theory) frames cognition as **inference constra
 ## Citation
 
 ```bibtex
-@misc{higuchi2025csct,
+@misc{higuchi2026csct,
   author       = {Higuchi, Naoki},
   title        = {Intelligence within Bounds: Why Cognition Requires a Closed Convex Hull},
-  year         = {2025},
+  year         = {2026},
   publisher    = {Zenodo},
   doi          = {10.5281/zenodo.18408862},
   url          = {https://doi.org/10.5281/zenodo.18408862}

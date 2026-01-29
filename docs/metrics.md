@@ -10,7 +10,7 @@ CSCT distinguishes:
 - **Operational reporting criterion** (binary pass/fail): e.g., `withheld_sim ≥ 0.90`.
 - **Statistical analysis** on the **continuous** metric (e.g., `withheld_sim`) to avoid threshold artifacts.
 
-This separation is used consistently across EX6–EX10.
+This separation is used consistently across EX6–EX9.
 
 ## Common metrics
 

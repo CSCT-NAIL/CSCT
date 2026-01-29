@@ -1,5 +1,3 @@
-# Intelligence within Bounds (CSCT)
-
 This repository hosts a GitHub Pages site (`/docs`) plus the LaTeX source used to generate the manuscript.
 
 ## GitHub Pages
@@ -24,7 +22,7 @@ The LaTeX source and figure outputs used in the paper are in `paper/`.
 @misc{higuchi2025csct,
   author       = {Higuchi, Naoki},
   title        = {Intelligence within Bounds: Why Cognition Requires a Closed Convex Hull},
-  year         = {2025},
+  year         = {2026},
   publisher    = {Zenodo},
   doi          = {10.5281/zenodo.18408862},
   url          = {https://doi.org/10.5281/zenodo.18408862}
