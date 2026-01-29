@@ -6,7 +6,7 @@
 
 **Official implementation of the paper:**
 
-> **Intelligence within Bounds: Why Cognition Requires a Closed Convex Hull*
+> **Intelligence within Bounds: Why Cognition Requires a Closed Convex Hull**
 >
 > *How do discrete symbolic representations emerge from continuous neural dynamics?*
 
@@ -183,18 +183,31 @@ python csct_suite.py --run all --seeds 30
 ---
 
 ## Citation
-@article{csct2026,
-  title={Intelligence within Bounds: Why Cognition Requires a Closed Convex Hull},
-  author={Higuchi, Naoki},
-  year={2026},
-  journal={Preprint},
-  note={Work in progress},
-  url={https://github.com/CSCT-NAIL/CSCT}
+
+**Paper:**
+```bibtex
+@misc{higuchi2026csct,
+  author       = {Higuchi, Naoki},
+  title        = {Intelligence within Bounds: Why Cognition Requires a Closed Convex Hull},
+  year         = {2026},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.18408862},
+  url          = {https://doi.org/10.5281/zenodo.18408862}
 }
+```
 
-**Software Citation:**
+**Software:**
+```bibtex
+@software{csct2026code,
+  author       = {Higuchi, Naoki},
+  title        = {CSCT: Clock-Selected Compression Theory (Code)},
+  year         = {2026},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.18382368},
+  url          = {https://doi.org/10.5281/zenodo.18382368}
+}
+```
 
-> CSCT-NAIL. (2026). CSCT-NAIL/CSCT: CSCT Engine: Initial Release (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.18382368
 ---
 
 ## Project Structure
