@@ -1,5 +1,3 @@
-# CSCT-NAIL: Project Website Source
-
 This branch (`gh-pages`) contains the source code for the official project website: **https://csct-nail.com**
 
 ## What is CSCT?
