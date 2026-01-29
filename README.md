@@ -1,5 +1,3 @@
-# CSCT: Clock-Selected Compression Theory
-
 This repository hosts the official implementation and the LaTeX source for the manuscript.
 
 ## Project Structure
