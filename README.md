@@ -1,17 +1,20 @@
-This repository hosts the official implementation and the LaTeX source for the manuscript.
+# CSCT-NAIL: Project Website Source
 
-## Project Structure
+This branch (`gh-pages`) contains the source code for the official project website: **https://csct-nail.com**
 
-- **Code & Paper**: Located in the `main` branch.
-- **Project Website**: Hosted via the `gh-pages` branch.
+## What is CSCT?
 
-## GitHub Pages
+## About CSCT
+**Clock-Selected Compression Theory (CSCT)** explains the emergence of discrete symbols from continuous neural dynamics through:
+- **Closed Convex Hull**: Defining the bounds of reliable inference.
+- [cite_start]**Clock Selection**: Temporal gating for discrete event emergence[cite: 1].
+- [cite_start]**Irreversible Anchors**: Ensuring thermodynamic directionality and stability[cite: 1].
 
-The project website is available at: **https://csct-nail.com**
+## Site Structure
 
-- **Source**: Deploy from a branch
-- **Branch**: `gh-pages`
-- **Folder**: `/(root)`
+- `docs/index.md`: Main landing page with the core operational claims.
+- `docs/experiments.md`: Detailed summaries of EX1 through EX9.
+- `docs/assets/`: Figures and the manuscript PDF.
 
 ## Paper Source
 

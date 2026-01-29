@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Intelligence within Bounds"
+title: "CSCT: Clock-Selected Compression Theory"
 ---
 
 ## Why cognition requires bounds
