@@ -1,5 +1,5 @@
-title: CSCT-NAIL (CSCT Neuro AI Lab)
-description: Intelligence within Bounds: Why Cognition Requires a Closed Convex Hull
+title: "CSCT-NAIL (CSCT Neuro AI Lab)"
+description: "Intelligence within Bounds: Why Cognition Requires a Closed Convex Hull"
 theme: minima
 markdown: kramdown
 kramdown:
@@ -11,5 +11,3 @@ plugins:
 relative_links:
   enabled: true
   collections: true
-include:
-  - docs
