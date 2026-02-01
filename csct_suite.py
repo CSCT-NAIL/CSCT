@@ -13,7 +13,6 @@ Unified runner for CSCT experiments:
   - EX7: Relational internal time — event-rate dilation
   - EX8: Semantic grounding — anchor alone provides meaning (A5)
   - EX9: Syntax emergence — composition rule learning from codes (A5)
-  - EX10: Logic gate routing — command-as-anchor with MultiGate router
 
 Experiment Design:
   EX1: Single-channel waveforms - compare SingleGate vs MultiGate (capacity control)
@@ -36,11 +35,9 @@ Usage:
   python csct_suite.py --run ex7              # Run EX7 only
   python csct_suite.py --run ex8              # Run EX8 only (sweep)
   python csct_suite.py --run ex9              # Run EX9 only (sweep)
-  python csct_suite.py --run ex10             # Run EX10 only
   python csct_suite.py --run all              # Run all
   python csct_suite.py --run ex1              # EX1 runs SingleGate vs MultiGate (always)
 
-Author: NAOKI (CSCT Research)
 """
 
 import argparse
@@ -2712,126 +2709,6 @@ def create_ex9_aggregate_figures(base_dir: Path) -> None:
     print(f'[saved] {p}')
 
 
-def create_ex10_aggregate_figures(base_dir: Path) -> None:
-    """Create EX10 aggregate figures from all seeds.
-    
-    Reads ablation_results.csv from each seed directory and creates:
-    1. Anchor mode vs accuracy/gate_acc comparison
-    2. Expert specialization accuracy
-    """
-    if not HAS_PANDAS:
-        return
-    
-    import pandas as pd
-    import numpy as np
-    import matplotlib.pyplot as plt
-    
-    ex10_dir = base_dir / 'ex10'
-    if not ex10_dir.exists():
-        return
-    
-    out_dir = base_dir / 'paper_figures'
-    out_dir.mkdir(parents=True, exist_ok=True)
-    
-    # Collect ablation results from all seeds
-    all_data = []
-    
-    for seed_dir in ex10_dir.iterdir():
-        if not seed_dir.is_dir():
-            continue
-        csv_path = seed_dir / 'ablation_results.csv'
-        if csv_path.exists():
-            try:
-                df = pd.read_csv(csv_path)
-                seed_num = seed_dir.name.replace('seed', '')
-                df['seed'] = int(seed_num)
-                all_data.append(df)
-            except Exception as e:
-                print(f"[warn] Could not read {csv_path}: {e}")
-    
-    if not all_data:
-        print("[info] No EX10 ablation_results.csv files found")
-        return
-    
-    df_all = pd.concat(all_data, ignore_index=True)
-    n_seeds = df_all['seed'].nunique()
-    print(f"[EX10] Creating aggregate figures ({n_seeds} seeds)")
-    
-    # Figure: 2 panels
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-    
-    # Left: Anchor mode comparison (accuracy and gate_acc)
-    ax = axes[0]
-    modes = ['normal', 'zero', 'shuffle']
-    mode_labels = ['Normal\nAnchor', 'Zero\nAnchor', 'Shuffled\nAnchor']
-    
-    grouped = df_all.groupby('anchor_mode')
-    
-    acc_means = [grouped.get_group(m)['accuracy'].mean() if m in grouped.groups else 0 for m in modes]
-    acc_stds = [grouped.get_group(m)['accuracy'].std() if m in grouped.groups else 0 for m in modes]
-    gate_means = [grouped.get_group(m)['gate_acc'].mean() if m in grouped.groups else 0 for m in modes]
-    gate_stds = [grouped.get_group(m)['gate_acc'].std() if m in grouped.groups else 0 for m in modes]
-    
-    x_pos = np.arange(len(modes))
-    width = 0.35
-    
-    bars1 = ax.bar(x_pos - width/2, acc_means, width, yerr=acc_stds, capsize=4,
-                   label='Task Accuracy', color='C0', alpha=0.8, edgecolor='black')
-    bars2 = ax.bar(x_pos + width/2, gate_means, width, yerr=gate_stds, capsize=4,
-                   label='Gate Accuracy', color='C1', alpha=0.8, edgecolor='black')
-    
-    # Baselines
-    ax.axhline(0.556, color='C0', linestyle='--', alpha=0.5, label='Random task (5/9)')
-    ax.axhline(0.333, color='C1', linestyle='--', alpha=0.5, label='Random gate (1/3)')
-    
-    ax.set_xticks(x_pos)
-    ax.set_xticklabels(mode_labels, fontsize=10)
-    ax.set_ylabel('Accuracy', fontsize=11)
-    ax.set_title('Anchor Ablation Study', fontsize=12)
-    ax.set_ylim(0, 1.1)
-    ax.legend(fontsize=8, loc='upper right')
-    ax.grid(True, alpha=0.3, axis='y')
-    
-    # Right: Expert specialization (normal anchor only)
-    ax = axes[1]
-    normal_df = df_all[df_all['anchor_mode'] == 'normal']
-    
-    expert_metrics = ['exp0_acc', 'exp1_acc', 'exp2_acc']
-    expert_labels = ['Expert 0\n(AND)', 'Expert 1\n(OR)', 'Expert 2\n(NOR)']
-    
-    means = [normal_df[m].mean() for m in expert_metrics]
-    stds = [normal_df[m].std() for m in expert_metrics]
-    
-    x_pos = np.arange(len(expert_metrics))
-    colors = ['C2', 'C3', 'C4']
-    bars = ax.bar(x_pos, means, yerr=stds, capsize=5,
-                  color=colors, alpha=0.8, edgecolor='black')
-    
-    ax.axhline(1.0, color='green', linestyle='--', alpha=0.5, label='Perfect specialization')
-    ax.set_xticks(x_pos)
-    ax.set_xticklabels(expert_labels, fontsize=10)
-    ax.set_ylabel('Accuracy', fontsize=11)
-    ax.set_title('Expert Specialization (Normal Anchor)', fontsize=12)
-    ax.set_ylim(0, 1.1)
-    ax.legend(fontsize=9)
-    ax.grid(True, alpha=0.3, axis='y')
-    
-    # Add value annotations
-    for bar, mean in zip(bars, means):
-        ax.annotate(f'{mean:.3f}',
-                   xy=(bar.get_x() + bar.get_width() / 2, bar.get_height()),
-                   xytext=(0, 3), textcoords='offset points',
-                   ha='center', fontsize=10)
-    
-    fig.suptitle(f'EX10: Logic Gate with MultiGate Router ({n_seeds} seeds)', fontsize=13)
-    fig.tight_layout(rect=[0, 0, 1, 0.93])
-    p = out_dir / 'ex10_aggregate.png'
-    fig.savefig(p, dpi=150, bbox_inches='tight')
-    plt.close(fig)
-    print(f'[saved] {p}')
-
-
-
 
 def create_paper_figures(base_dir: Path) -> None:
     """Create paper-ready figures from SEED-mean summary tables.
@@ -3281,21 +3158,6 @@ def create_paper_figures(base_dir: Path) -> None:
         plt.close(fig)
         print(f'[saved] {p}')
 
-    # EX10
-    df10 = _read_mean('EX10')
-    if df10 is not None and 'anchor_mode' in df10.columns and 'accuracy' in df10.columns:
-        fig = plt.figure(figsize=(6,4))
-        ax = fig.add_subplot(1,1,1)
-        ax.bar(df10['anchor_mode'].astype(str), df10['accuracy'].astype(float))
-        ax.set_ylabel('accuracy')
-        ax.set_title('EX10: Logic under anchor ablations (SEED-mean)')
-        ax.grid(True, alpha=0.3, axis='y')
-        plt.tight_layout()
-        p = out_dir / 'paper_ex10.png'
-        fig.savefig(p, dpi=200, bbox_inches='tight')
-        plt.close(fig)
-        print(f'[saved] {p}')
-
     # EX1 detailed aggregate figures (waveform comparison)
     create_ex1_aggregate_figures(base_dir)
     
@@ -3323,9 +3185,6 @@ def create_paper_figures(base_dir: Path) -> None:
     # EX9 detailed aggregate figures (composition extraction)
     create_ex9_aggregate_figures(base_dir)
     
-    # EX10 detailed aggregate figures (logic gate routing)
-    create_ex10_aggregate_figures(base_dir)
-
 
 def main():
     ap = argparse.ArgumentParser(description="CSCT Experiment Suite Runner")
@@ -3622,29 +3481,6 @@ def main():
             
             print(f"{'-'*50}\n")
     
-    # EX10: Logic Gate with MultiGate
-    if args.run in ["ex10", "all"]:
-        print(f"\n{'#'*70}")
-        print(f"# EX10: Logic Gate with MultiGate (AND/OR/NOR)")
-        print(f"{'#'*70}\n")
-        
-        ex10_results = run_ex10_suite(
-            args.python, base_dir, common_args,
-            args.ex10_steps, args.seeds
-        )
-        all_results.extend(ex10_results)
-        
-        if ex10_results:
-            print(f"\n{'-'*50}")
-            print("EX10 Summary:")
-            print(f"{'-'*50}")
-            for mode in ["normal", "zero", "shuffle"]:
-                subset = [r for r in ex10_results if r.get("anchor_mode") == mode]
-                if subset:
-                    acc = np.mean([r.get("accuracy", float('nan')) for r in subset])
-                    gate = np.mean([r.get("gate_acc", float('nan')) for r in subset])
-                    print(f"  {mode:8s}: acc={acc:.3f}, gate_acc={gate:.3f}")
-            print(f"{'-'*50}\n")
     
     # CLI summary: per-seed + SEED-mean
     if all_results:
